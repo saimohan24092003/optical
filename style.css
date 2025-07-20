@@ -1,0 +1,79 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* prevent scroll on animation full screen */
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.badge {
+  background-color: #5a4bff;
+  color: white;
+  font-size: 24px;
+  padding: 16px 36px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #333;
+  transition: opacity 0.5s ease;
+}
+
+.animation {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.animation.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.move-up {
+  transform: translateY(-150%);
+  opacity: 0;
+  pointer-events: none;
+}

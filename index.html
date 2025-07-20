@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cat Animation on Click</title>
+  <!-- Load Lottie animation -->
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+  <!-- Load Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      height: 100vh; width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+    }
+
+    button {
+      padding: 15px 40px;
+      font-size: 24px;
+      border-radius: 30px;
+      border: none;
+      background: #5a4bff;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    dotlottie-wc {
+      display: none;
+      width: 300px;
+      height: 300px;
+    }
+
+    dotlottie-wc.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <button id="celebrateBtn">🎯 Quiz Master!</button>
+  <p>Click on the badge to celebrate!!!</p>
+
+  <dotlottie-wc
+    id="catAnimation"
+    src="https://lottie.host/d3a0f035-4f42-40c6-b38d-2ac928c36d9a/fkGxnObeWr.lottie"
+    speed="1"
+    loop
+    autoplay
+  ></dotlottie-wc>
+
+  <script>
+    const btn = document.getElementById('celebrateBtn');
+    const animation = document.getElementById('catAnimation');
+
+    btn.addEventListener('click', () => {
+      // Show animation
+      animation.classList.add('active');
+
+      // Disable and fade button
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+
+      // Launch confetti
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // Optional: burst again after delay
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 90,
+          origin: { y: 0.4 }
+        });
+      }, 500);
+    });
+  </script>
+</body>
+</html>
